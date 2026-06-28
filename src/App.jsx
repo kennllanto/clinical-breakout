@@ -10,6 +10,7 @@ import Briefing from './components/Briefing.jsx'
 import LevelIntro from './components/LevelIntro.jsx'
 import LockScreen from './components/LockScreen.jsx'
 import ProgressMap from './components/ProgressMap.jsx'
+import LivesPanel from './components/LivesPanel.jsx'
 import Victory from './components/Victory.jsx'
 import GameOver from './components/GameOver.jsx'
 import Editor from './components/Editor.jsx'
@@ -164,8 +165,11 @@ export default function App() {
   const levelNumber = current.levelIndex + 1
 
   return (
-    <Shell game={game} lives={lives} showHud onExit={() => setScreen(SCREEN.BRIEFING)} {...hudProps}>
-      <ProgressMap game={game} pos={pos} />
+    <Shell game={game} lives={lives} showHud showLives={false} onExit={() => setScreen(SCREEN.BRIEFING)} {...hudProps}>
+      <div className="play-header">
+        <div className="play-col"><ProgressMap game={game} pos={pos} /></div>
+        <div className="play-col"><LivesPanel lives={lives} max={game.lives} /></div>
+      </div>
       {sub === 'intro' ? (
         <LevelIntro
           level={current.level}
@@ -196,7 +200,8 @@ export default function App() {
   )
 }
 
-function Shell({ game, lives, showHud, onExit, onSignOut, muted, onToggleSound, children }) {
+function Shell({ game, lives, showHud, showLives, onExit, onSignOut, muted, onToggleSound, children }) {
+  const livesInHud = showLives === undefined ? showHud : showLives
   return (
     <div className="app">
       <header className="topbar">
@@ -208,7 +213,7 @@ function Shell({ game, lives, showHud, onExit, onSignOut, muted, onToggleSound, 
           </div>
         </div>
         <div className="hud">
-          {showHud && <Hearts lives={lives} max={game.lives} />}
+          {livesInHud && <Hearts lives={lives} max={game.lives} />}
           {showHud && onExit && (
             <button className="btn ghost sm" onClick={onExit} title="Back to briefing">
               ⤺ Exit
