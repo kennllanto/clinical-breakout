@@ -28,20 +28,24 @@ export default function Timer({ seconds, label, resetKey }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetKey, seconds])
 
-  // Beep on the final-10-seconds and at zero.
+  // Beep every second for the whole duration; in the final 20 seconds beep
+  // twice as fast (an extra mid-second beep) and louder. Buzz at zero.
   useEffect(() => {
     if (remaining <= 0) {
       playTimeUp()
-    } else if (remaining <= 3) {
-      playFinalTick()
-    } else if (remaining <= 10) {
-      playTick()
+      return
     }
+    if (remaining <= 20) {
+      playFinalTick()
+      const id = setTimeout(playFinalTick, 500) // extra beep -> 2 per second
+      return () => clearTimeout(id)
+    }
+    playTick()
   }, [remaining])
 
   const expired = remaining <= 0
   const warn = remaining <= 30 && !expired
-  const critical = remaining <= 10 && !expired
+  const critical = remaining <= 20 && !expired
   return (
     <div className={`timer ${expired ? 'expired' : warn ? 'warn' : ''} ${critical ? 'critical' : ''}`}>
       <span className="timer-label">{label}</span>

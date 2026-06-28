@@ -35,16 +35,14 @@ export default function ProgressMap({ game, pos, finished = false }) {
   const total = rows.reduce((a, row) => a + row.nodes.length, 0)
   const solved = finished ? total : pos
 
-  // Connectors: each node links to the nearest node in the row above.
+  // Connectors: link every node to every node in the row above (full lattice).
   const links = []
   for (let li = 0; li < rows.length - 1; li++) {
     const upper = rows[li + 1].nodes
     rows[li].nodes.forEach((node) => {
-      let nearest = upper[0]
       upper.forEach((u) => {
-        if (Math.abs(u.x - node.x) < Math.abs(nearest.x - node.x)) nearest = u
+        links.push({ x1: node.x, y1: node.y, x2: u.x, y2: u.y })
       })
-      links.push({ x1: node.x, y1: node.y, x2: nearest.x, y2: nearest.y })
     })
   }
 

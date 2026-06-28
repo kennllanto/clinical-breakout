@@ -55,16 +55,16 @@ export function playStart() {
   tone(880, 0.16, { when: 0.12, type: 'sine', vol: 0.16 })
 }
 
-// Per-second beep during the final 10 seconds.
+// Soft per-second tick — plays for the whole timer duration.
 export function playTick() {
   if (muted) return
-  tone(1000, 0.08, { type: 'square', vol: 0.12 })
+  tone(760, 0.06, { type: 'sine', vol: 0.07 })
 }
 
-// Sharper beep for the last 3 seconds.
+// Sharper, louder beep for the urgent final stretch (last 20 seconds).
 export function playFinalTick() {
   if (muted) return
-  tone(1320, 0.1, { type: 'square', vol: 0.16 })
+  tone(1320, 0.09, { type: 'square', vol: 0.16 })
 }
 
 // Low buzz when the clock hits zero.
