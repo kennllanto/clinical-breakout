@@ -113,6 +113,16 @@ export default function Editor({ game, onSave, onClose, onResetDefault }) {
             <span>Briefing (blank line separates paragraphs)</span>
             <textarea rows={4} value={draft.briefing || ''} onChange={(e) => update((d) => (d.briefing = e.target.value))} />
           </label>
+          <label className="full">
+            <span>Learning objectives (one per line)</span>
+            <textarea
+              rows={3}
+              value={(draft.objectives || []).join('\n')}
+              onChange={(e) => update((d) => {
+                d.objectives = e.target.value.split('\n').map((o) => o.trim()).filter(Boolean)
+              })}
+            />
+          </label>
           <p className="muted">{draft.levels.length} levels · {totalLocks} locks</p>
         </section>
 

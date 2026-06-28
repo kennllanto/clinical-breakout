@@ -5,7 +5,7 @@ export default function Victory({ game, lives, onRestart, onEdit }) {
       <h1>Patient Stabilized — You Broke Out!</h1>
       <p className="subtitle">
         All {game.levels.reduce((n, l) => n + (l.locks?.length || 0), 0)} clinical locks decoded.
-        Mr. Walker is hemodynamically stable.
+        Your patient is hemodynamically stable.
       </p>
       <p className="lives-survived">Finished with {lives} of {game.lives} lives remaining ❤️</p>
       <div className="briefing-actions">

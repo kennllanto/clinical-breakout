@@ -84,7 +84,7 @@ export default function App() {
   if (!authed) {
     return (
       <Login
-        title="The Vasoactive Gauntlet"
+        title={game.title}
         onSuccess={() => setAuthedState(true)}
       />
     )
@@ -211,7 +211,7 @@ function Shell({ game, lives, showHud, onExit, onSignOut, children }) {
       </header>
       <main className="main">{children}</main>
       <footer className="footer">
-        <span>Vasoactive Gauntlet · facilitator board</span>
+        <span>{game.title} · facilitator board</span>
       </footer>
     </div>
   )

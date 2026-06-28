@@ -202,6 +202,18 @@ h2 { font-size: 22px; margin: 6px 0 12px; }
   padding: 12px; display: flex; flex-wrap: wrap; gap: 10px;
 }
 
+/* ---------- objectives ---------- */
+.objectives {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent-2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 18px 0 4px;
+}
+.objectives ol { margin: 8px 0 0; padding-left: 20px; }
+.objectives li { line-height: 1.55; color: #cfdcea; margin-bottom: 4px; }
+
 /* ---------- login gate ---------- */
 .login-screen {
   min-height: 100vh;

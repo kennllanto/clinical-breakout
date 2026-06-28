@@ -15,6 +15,16 @@ export default function Briefing({ game, onStart, onEdit }) {
           <p key={i}>{para}</p>
         ))}
       </div>
+      {game.objectives?.length > 0 && (
+        <div className="objectives">
+          <span className="narrative-tag">Learning objectives</span>
+          <ol>
+            {game.objectives.map((obj, i) => (
+              <li key={i}>{obj}</li>
+            ))}
+          </ol>
+        </div>
+      )}
       <div className="briefing-actions">
         <button className="btn primary big" onClick={onStart}>
           Begin the Gauntlet →

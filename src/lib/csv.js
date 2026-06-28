@@ -140,6 +140,7 @@ export function csvToGame(text, base) {
     title: base?.title || 'Imported Game',
     subtitle: base?.subtitle || '',
     briefing: base?.briefing || '',
+    objectives: base?.objectives || [],
     lives: base?.lives || 3,
     timers: base?.timers || { crack: 120, sbar: 180, timeout: 180 },
     levels: order.map((id) => levelsMap.get(id)),

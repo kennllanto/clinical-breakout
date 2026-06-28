@@ -1,11 +1,13 @@
-# The Vasoactive Gauntlet
+# Unlock Me If You Can: The Vasoactive Breakout
 
-A critical-care **breakout / escape-room game** on inotropes & vasopressors for ICU nurses.
-Built as a static React + Vite single-page app — no backend, all state in the browser.
+A critical-care **breakout / escape-room game** on inotropes & vasopressors for ICU nurses
+(default patient case: Mrs. Ina Pressor). Built as a static React + Vite single-page app —
+no backend, all state in the browser.
 
 Four levels, ten clinical locks, three shared team lives. Crack each lock's code, then
-deliver an SBAR handover the facilitator marks pass/fail. Designed as a single shared
-facilitator board.
+deliver a short clinical rationale the facilitator marks pass/fail. Designed as a single
+shared facilitator board. The content is data-driven (`src/data/defaultGame.js`), so the
+same engine can host any topic pack.
 
 ## Run locally
 
