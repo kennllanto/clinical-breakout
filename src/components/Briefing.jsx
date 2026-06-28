@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { HeroArt } from './Art.jsx'
-import { playMission, playStart } from '../lib/sound.js'
+import { playMission } from '../lib/sound.js'
 
 export default function Briefing({ game, onStart, onEdit }) {
   const levelsN = game.levels.length
@@ -15,7 +15,7 @@ export default function Briefing({ game, onStart, onEdit }) {
   }, [])
 
   function accept() {
-    playStart()
+    playMission()
     onStart()
   }
 
