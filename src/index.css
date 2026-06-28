@@ -251,10 +251,17 @@ h2 { font-size: 22px; margin: 6px 0 12px; }
 .facilitator-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
 /* ---------- end screens ---------- */
-.endscreen { text-align: center; }
+.endscreen { text-align: center; position: relative; overflow: hidden; }
+.endscreen > *:not(.pixels) { position: relative; z-index: 1; }
+.pixels { z-index: 0; }
 .big-emoji { font-size: 64px; margin-bottom: 6px; }
 .endscreen .briefing-actions { justify-content: center; }
 .victory { border-color: #2ea86a; box-shadow: 0 0 60px #00e5ff33, var(--shadow); }
+.victory-title {
+  position: relative; display: inline-block;
+  font-size: 40px; text-transform: uppercase; letter-spacing: 3px; font-weight: 900;
+  color: #fff; text-shadow: 0 0 18px var(--accent), 3px 3px 0 var(--success);
+}
 .gameover { border-color: #a81f3a; box-shadow: 0 0 50px #ff3df033, var(--shadow); position: relative; overflow: hidden; }
 .gameover h1 {
   position: relative; display: inline-block;

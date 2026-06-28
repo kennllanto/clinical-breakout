@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Timer from './Timer.jsx'
 import { LockGlyph } from './Art.jsx'
+import { playCoin } from '../lib/sound.js'
 
 export default function LockScreen({
   lock,
@@ -33,6 +34,7 @@ export default function LockScreen({
     e.preventDefault()
     if (!guess.trim()) return
     if (checkCode(guess)) {
+      playCoin()
       onCorrect()
     } else {
       setShake(true)

@@ -74,6 +74,22 @@ export function playTimeUp() {
   tone(240, 0.45, { when: 0.18, type: 'sawtooth', vol: 0.18 })
 }
 
+// 8-bit "coin" blip when a lock is cracked — classic two-note jingle.
+export function playCoin() {
+  if (muted) return
+  tone(988, 0.07, { type: 'square', vol: 0.16 }) // B5
+  tone(1319, 0.3, { when: 0.07, type: 'square', vol: 0.16 }) // E6
+}
+
+// Short ascending fanfare on game completion.
+export function playVictory() {
+  if (muted) return
+  ;[[523, 0], [659, 0.12], [784, 0.24], [1047, 0.38]].forEach(([f, w]) =>
+    tone(f, 0.18, { when: w, type: 'square', vol: 0.15 }),
+  )
+  tone(1047, 0.5, { when: 0.56, type: 'square', vol: 0.14 })
+}
+
 // Original spy/agent-style suspense sting played when accepting the mission.
 // (An homage to the genre — not the copyrighted theme melody.)
 export function playMission() {
