@@ -73,3 +73,19 @@ export function playTimeUp() {
   tone(320, 0.35, { type: 'sawtooth', vol: 0.18 })
   tone(240, 0.45, { when: 0.18, type: 'sawtooth', vol: 0.18 })
 }
+
+// Original spy/agent-style suspense sting played when accepting the mission.
+// (An homage to the genre — not the copyrighted theme melody.)
+export function playMission() {
+  if (muted) return
+  const G2 = 98, D4 = 294, F4 = 349, Csh4 = 277
+  // driving low ostinato — the tense "gallop"
+  ;[0, 0.18, 0.5, 0.68].forEach((w) =>
+    tone(G2, 0.16, { when: w, type: 'sawtooth', vol: 0.16 }),
+  )
+  // two-note accent rise
+  tone(D4, 0.18, { when: 0.92, type: 'square', vol: 0.13 })
+  tone(F4, 0.22, { when: 1.14, type: 'square', vol: 0.14 })
+  // unresolved tail
+  tone(Csh4, 0.5, { when: 1.42, type: 'sawtooth', vol: 0.12 })
+}

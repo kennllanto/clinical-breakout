@@ -1,41 +1,53 @@
 import { HeroArt } from './Art.jsx'
+import { playMission } from '../lib/sound.js'
 
 export default function Briefing({ game, onStart, onEdit }) {
-  const totalLocks = game.levels.reduce((n, l) => n + (l.locks?.length || 0), 0)
+  const levelsN = game.levels.length
+  const locksN = game.levels.reduce((n, l) => n + (l.locks?.length || 0), 0)
+  const summary = [`${levelsN} Levels`, `${locksN} clinical locks`, `${game.lives} lives`]
+
+  function accept() {
+    playMission()
+    onStart()
+  }
+
   return (
-    <div className="card briefing">
+    <div className="card briefing mi">
+      <div className="mi-tag"><span className="mi-dot" aria-hidden />CLASSIFIED · EYES ONLY</div>
+
       <div className="hero-figure"><HeroArt /></div>
-      <div className="eyebrow">Clinical Briefing</div>
+
+      <div className="eyebrow">Mission Briefing</div>
       <h1>{game.title}</h1>
       <p className="subtitle">{game.subtitle}</p>
-      <div className="stat-row">
-        <div className="stat"><b>{game.levels.length}</b><span>Levels</span></div>
-        <div className="stat"><b>{totalLocks}</b><span>Locks</span></div>
-        <div className="stat"><b>{game.lives}</b><span>Team Lives</span></div>
+
+      <p className="mi-intro">Your mission, should you choose to accept it:</p>
+      <div className="mission-summary">
+        <span className="narrative-tag">Mission Summary</span>
+        <ul className="mi-bullets">
+          {summary.map((s, i) => <li key={i}>{s}</li>)}
+        </ul>
       </div>
-      <div className="briefing-body">
-        {game.briefing.split('\n\n').map((para, i) => (
-          <p key={i}>{para}</p>
-        ))}
-      </div>
+
       {game.objectives?.length > 0 && (
         <div className="objectives">
           <span className="narrative-tag">Learning objectives</span>
           <ol>
-            {game.objectives.map((obj, i) => (
-              <li key={i}>{obj}</li>
-            ))}
+            {game.objectives.map((obj, i) => <li key={i}>{obj}</li>)}
           </ol>
         </div>
       )}
+
       <div className="briefing-actions">
-        <button className="btn primary big" onClick={onStart}>
-          Begin the Gauntlet →
+        <button className="btn mi-accept big" onClick={accept}>
+          Accept Mission →
         </button>
         <button className="btn ghost" onClick={onEdit}>
           ✎ Edit game / Import
         </button>
       </div>
+
+      <p className="mi-selfdestruct">This briefing will not self-destruct.</p>
     </div>
   )
 }

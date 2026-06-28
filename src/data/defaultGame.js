@@ -58,7 +58,7 @@ You have 3 team lives. Crack each lock's code within 2 minutes, then give a shor
         {
           id: '1.4',
           label: 'Lock 1.4 — Titration Parameters',
-          vignette: `The CVAD is successfully placed, and Noradrenaline is running at 5 mcg/min. According to the Surviving Sepsis guidelines, what is the standard minimum target MAP (mmHg) you should titrate this infusion to maintain?`,
+          vignette: `The CVAD is successfully placed, and Noradrenaline is running at 5 mcg. According to the Surviving Sepsis guidelines, what is the standard minimum target MAP (mmHg) you should titrate this infusion to maintain?`,
           codes: ['65', '65MMHG', '65 MMHG'],
           rationale: `Consensus guidelines confirm that targeting a minimum MAP of 65 mmHg provides adequate organ-perfusion pressure in the majority of distributive shock states while minimizing unnecessary catecholamine toxicity, tachycardia, and excessive myocardial oxygen consumption (Westphal, n.d.).`,
         },
@@ -67,7 +67,7 @@ You have 3 team lives. Crack each lock's code within 2 minutes, then give a shor
     {
       id: 'L2',
       title: 'Level 2 — Evolving Septic Shock & Multimodal Support',
-      narrative: `It is now 06:00. Ina's condition worsens. Her temperature is 38.9 °C, urine output has dropped to 15 mL/hr, and her lactate has risen from 1.2 to 4.0 mmol/L. The Noradrenaline has been rapidly titrated upwards and is now running at 22 mcg/min. Her MAP is hovering at 59.`,
+      narrative: `It is now 06:00. Ina's condition worsens. Her temperature is 38.9 °C, urine output has dropped to 15 mL/hr, and her lactate has risen from 1.2 to 4.0 mmol/L. The Noradrenaline has been rapidly titrated upwards and is now running at 22 mcg. Her MAP is hovering at 59.`,
       locks: [
         {
           id: '2.1',
