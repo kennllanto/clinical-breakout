@@ -202,6 +202,61 @@ h2 { font-size: 22px; margin: 6px 0 12px; }
   padding: 12px; display: flex; flex-wrap: wrap; gap: 10px;
 }
 
+/* ---------- artwork ---------- */
+.art { display: block; width: 100%; height: auto; }
+
+.hero-figure {
+  margin: -6px 0 16px;
+  background: radial-gradient(120% 100% at 50% 0%, #102634 0%, transparent 70%);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 14px 6px;
+}
+.hero-art { max-height: 170px; }
+
+.level-art-wrap {
+  width: 96px; height: 96px;
+  float: right;
+  margin: 0 0 8px 16px;
+}
+.level-art { width: 96px; height: 96px; }
+
+.victory-art-wrap { width: 180px; margin: 0 auto 6px; }
+
+.lock-glyph { width: 30px; height: 36px; }
+.lock-icon { display: grid; place-items: center; }
+
+/* ECG draw animation */
+.ecg {
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  animation: ecgdraw 3.2s linear infinite;
+  filter: drop-shadow(0 0 4px var(--accent-2));
+}
+@keyframes ecgdraw { to { stroke-dashoffset: 0; } }
+
+.iv-drop { animation: ivdrop 2.2s ease-in infinite; }
+@keyframes ivdrop {
+  0% { transform: translateY(-14px); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+.lock-glyph .shackle { transform-origin: 24px 26px; transition: transform 0.4s ease; }
+.lock-glyph.open .shackle { transform: rotate(18deg) translateX(4px) translateY(-2px); }
+
+.spark { animation: twinkle 1.8s ease-in-out infinite; }
+.spark.s2 { animation-delay: 0.4s; }
+.spark.s3 { animation-delay: 0.8s; }
+.spark.s4 { animation-delay: 1.2s; }
+@keyframes twinkle { 0%, 100% { opacity: 0.2; transform: scale(0.7); } 50% { opacity: 1; transform: scale(1.2); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ecg, .iv-drop, .spark { animation: none; }
+  .ecg { stroke-dashoffset: 0; }
+}
+
 /* ---------- objectives ---------- */
 .objectives {
   background: var(--panel-2);

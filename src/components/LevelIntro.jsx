@@ -1,6 +1,9 @@
+import { LevelArt } from './Art.jsx'
+
 export default function LevelIntro({ level, levelNumber, totalLevels, onContinue }) {
   return (
     <div className="card level-intro">
+      <div className="level-art-wrap"><LevelArt index={levelNumber - 1} /></div>
       <div className="eyebrow">Level {levelNumber} of {totalLevels}</div>
       <h2>{level.title}</h2>
       <div className="narrative">

@@ -1,7 +1,9 @@
+import { VictoryArt } from './Art.jsx'
+
 export default function Victory({ game, lives, onRestart, onEdit }) {
   return (
     <div className="card endscreen victory">
-      <div className="big-emoji" aria-hidden>🏆</div>
+      <div className="victory-art-wrap"><VictoryArt /></div>
       <h1>Patient Stabilized — You Broke Out!</h1>
       <p className="subtitle">
         All {game.levels.reduce((n, l) => n + (l.locks?.length || 0), 0)} clinical locks decoded.

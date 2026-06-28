@@ -1,7 +1,10 @@
+import { HeroArt } from './Art.jsx'
+
 export default function Briefing({ game, onStart, onEdit }) {
   const totalLocks = game.levels.reduce((n, l) => n + (l.locks?.length || 0), 0)
   return (
     <div className="card briefing">
+      <div className="hero-figure"><HeroArt /></div>
       <div className="eyebrow">Clinical Briefing</div>
       <h1>{game.title}</h1>
       <p className="subtitle">{game.subtitle}</p>

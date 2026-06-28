@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Timer from './Timer.jsx'
+import { LockGlyph } from './Art.jsx'
 
 export default function LockScreen({
   lock,
@@ -52,7 +53,7 @@ export default function LockScreen({
       <div className={`card lock-card ${shake ? 'shake' : ''}`}>
         <div className="lock-header">
           <div className={`lock-icon ${phase === 'sbar' ? 'open' : ''}`} aria-hidden>
-            {phase === 'sbar' ? '🔓' : '🔒'}
+            <LockGlyph open={phase === 'sbar'} />
           </div>
           <h2>{lock.label}</h2>
         </div>
