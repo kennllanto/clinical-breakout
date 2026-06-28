@@ -1,50 +1,51 @@
-// Pyramid progress map of all locks, e.g.
-//                4.1
-//           3.1     3.2
-//        2.1   2.2    2.3
-//      1.1  1.2  1.3   1.4
-// Level 1 forms the wide base; the final level is the apex. Solved locks are
-// filled, the current lock pulses, upcoming locks are dimmed.
+// Linear progress map: one row per level, locks shown as padlock icons in a
+// straight line, connected left-to-right. Solved locks show an open lock + tick,
+// the current lock pulses, upcoming locks are dimmed and closed.
 
-const W = 320
+function MapLock({ state, id }) {
+  return (
+    <div className={`pm-lock ${state}`}>
+      <svg viewBox="0 0 32 38" className="pm-lock-ico" aria-hidden>
+        <path className="pm-shackle" d="M9 18 v-5 a7 7 0 0 1 14 0 v5"
+              fill="none" strokeWidth="3" strokeLinecap="round" />
+        <rect className="pm-body" x="6" y="17" width="20" height="17" rx="4" strokeWidth="2" />
+        {state === 'done' ? (
+          <path className="pm-lk-check" d="M11 25.5 l3 3 l6.5 -7"
+                fill="none" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+        ) : (
+          <circle className="pm-lk-hole" cx="16" cy="25" r="2.4" />
+        )}
+      </svg>
+      <span className="pm-lock-id">{id}</span>
+    </div>
+  )
+}
 
 export default function ProgressMap({ game, pos, finished = false }) {
-  const levels = game.levels
-  const L = levels.length
-  const topY = 26
-  const rowGap = 46
-  const r = 15
-
-  // Build node positions, level by level, tracking a global index.
   let gi = 0
-  const rows = levels.map((level, li) => {
-    const n = level.locks.length
-    const y = topY + (L - 1 - li) * rowGap
-    const nodes = level.locks.map((lock, j) => {
-      const x = (W * (j + 1)) / (n + 1)
+  const total = game.levels.reduce((a, l) => a + l.locks.length, 0)
+  const solved = finished ? total : pos
+
+  const rows = game.levels.map((level, li) => {
+    const items = []
+    level.locks.forEach((lock, j) => {
       let state = 'todo'
       if (finished || gi < pos) state = 'done'
       else if (gi === pos) state = 'current'
+      const leftSolved = finished || gi < pos
       gi += 1
-      return { x, y, id: lock.id, state }
+      if (j > 0) {
+        items.push(<div key={`c${lock.id}`} className={`pm-conn ${leftSolved ? 'done' : ''}`} />)
+      }
+      items.push(<MapLock key={lock.id} state={state} id={lock.id} />)
     })
-    return { y, nodes }
+    return (
+      <div className="pm-row" key={level.id}>
+        <span className="pm-row-label">Level {li + 1}</span>
+        <div className="pm-locks">{items}</div>
+      </div>
+    )
   })
-
-  const height = topY + (L - 1) * rowGap + r + 14
-  const total = rows.reduce((a, row) => a + row.nodes.length, 0)
-  const solved = finished ? total : pos
-
-  // Connectors: link every node to every node in the row above (full lattice).
-  const links = []
-  for (let li = 0; li < rows.length - 1; li++) {
-    const upper = rows[li + 1].nodes
-    rows[li].nodes.forEach((node) => {
-      upper.forEach((u) => {
-        links.push({ x1: node.x, y1: node.y, x2: u.x, y2: u.y })
-      })
-    })
-  }
 
   return (
     <div className="progress-map">
@@ -52,33 +53,7 @@ export default function ProgressMap({ game, pos, finished = false }) {
         <span className="pm-title">Mission Progress</span>
         <span className="pm-count">{solved}/{total} locks</span>
       </div>
-      <svg viewBox={`0 0 ${W} ${height}`} className="pm-svg" role="img"
-           aria-label={`Progress: ${solved} of ${total} locks solved`}>
-        {links.map((l, i) => (
-          <line key={i} className="pm-link" x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} />
-        ))}
-        {rows.flatMap((row) =>
-          row.nodes.map((node) => (
-            <g key={node.id} className={`pm-node ${node.state}`}>
-              {node.state === 'current' && (
-                <circle className="pm-ring" cx={node.x} cy={node.y} r={r + 4} />
-              )}
-              <circle className="pm-disc" cx={node.x} cy={node.y} r={r} />
-              {node.state === 'done' ? (
-                <path
-                  className="pm-check"
-                  d={`M${node.x - 6} ${node.y} l4 4 l7 -8`}
-                  fill="none"
-                />
-              ) : (
-                <text className="pm-label" x={node.x} y={node.y + 3.5} textAnchor="middle">
-                  {node.id}
-                </text>
-              )}
-            </g>
-          )),
-        )}
-      </svg>
+      <div className="pm-rows">{rows}</div>
     </div>
   )
 }
