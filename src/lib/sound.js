@@ -90,6 +90,27 @@ export function playVictory() {
   tone(1047, 0.5, { when: 0.56, type: 'square', vol: 0.14 })
 }
 
+// Looping low "tension" pulse for the mission screen — a soft sub-bass thump
+// every ~1.1s. start/stop are managed by the Briefing component's lifecycle.
+let pulseTimer = null
+export function startPulse() {
+  if (pulseTimer) return
+  if (!audio()) return
+  const thump = () => {
+    if (muted) return
+    tone(58, 0.55, { type: 'sine', vol: 0.1 }) // sub-bass body
+    tone(116, 0.16, { type: 'sine', vol: 0.035 }) // faint overtone click
+  }
+  thump()
+  pulseTimer = setInterval(thump, 1100)
+}
+export function stopPulse() {
+  if (pulseTimer) {
+    clearInterval(pulseTimer)
+    pulseTimer = null
+  }
+}
+
 // Original spy/agent-style suspense sting played when accepting the mission.
 // (An homage to the genre — not the copyrighted theme melody.)
 export function playMission() {

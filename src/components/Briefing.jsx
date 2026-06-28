@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { HeroArt } from './Art.jsx'
-import { playMission } from '../lib/sound.js'
+import { playMission, startPulse, stopPulse } from '../lib/sound.js'
 
 export default function Briefing({ game, onStart, onEdit }) {
   const levelsN = game.levels.length
@@ -12,9 +12,12 @@ export default function Briefing({ game, onStart, onEdit }) {
   // Play Again, or Restart), so the gesture requirement is satisfied.
   useEffect(() => {
     playMission()
+    startPulse() // low tension loop while the mission screen is shown
+    return () => stopPulse() // stop when leaving the briefing
   }, [])
 
   function accept() {
+    stopPulse()
     playMission()
     onStart()
   }
