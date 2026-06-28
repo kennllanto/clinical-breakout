@@ -1,9 +1,15 @@
 // Out of lives — gamified, arcade "Game Over" (Wreck-It Ralph-style glitch +
 // falling pixels). Try Again resets lives and resumes the same lock.
+import { useEffect } from 'react'
+import { playGameOver } from '../lib/sound.js'
 
 const PIXELS = Array.from({ length: 18 })
 
 export default function GameOver({ onReset }) {
+  useEffect(() => {
+    playGameOver()
+  }, [])
+
   return (
     <div className="card endscreen gameover">
       <div className="pixels" aria-hidden>

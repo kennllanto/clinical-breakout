@@ -111,6 +111,17 @@ export function stopPulse() {
   }
 }
 
+// Descending 8-bit "defeat" jingle for the Game Over screen.
+export function playGameOver() {
+  if (muted) return
+  ;[[523, 0], [415, 0.2], [311, 0.4]].forEach(([f, w]) =>
+    tone(f, 0.22, { when: w, type: 'square', vol: 0.15 }),
+  )
+  // low, detuned buzz to land the defeat
+  tone(196, 0.6, { when: 0.62, type: 'sawtooth', vol: 0.16 })
+  tone(146, 0.7, { when: 0.66, type: 'sawtooth', vol: 0.12 })
+}
+
 // Original spy/agent-style suspense sting played when accepting the mission.
 // (An homage to the genre — not the copyrighted theme melody.)
 export function playMission() {
