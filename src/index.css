@@ -255,7 +255,11 @@ h2 { font-size: 22px; margin: 6px 0 12px; }
 .big-emoji { font-size: 64px; margin-bottom: 6px; }
 .endscreen .briefing-actions { justify-content: center; }
 .victory { border-color: #2ea86a; box-shadow: 0 0 60px #00e5ff33, var(--shadow); }
-.gameover { border-color: #a81f3a; }
+.gameover { border-color: #a81f3a; box-shadow: 0 0 50px #ff3df033, var(--shadow); }
+.gameover h1 {
+  font-size: 44px; text-transform: uppercase; letter-spacing: 3px; font-weight: 900;
+  color: #fff; text-shadow: 0 0 18px var(--danger), 3px 3px 0 var(--magenta);
+}
 .lives-survived { color: var(--muted); }
 
 /* ---------- level intro ---------- */

@@ -140,14 +140,12 @@ export default function App() {
     return (
       <Shell game={game} lives={0} showHud {...hudProps}>
         <GameOver
-          timeoutSeconds={timers.timeout}
           onReset={() => {
             setLives(game.lives)
             setSub('crack')
             setAttemptKey((k) => k + 1)
             setScreen(SCREEN.PLAY)
           }}
-          onRestart={() => setScreen(SCREEN.BRIEFING)}
         />
       </Shell>
     )
