@@ -1,13 +1,21 @@
+import { useEffect } from 'react'
 import { HeroArt } from './Art.jsx'
-import { playMission } from '../lib/sound.js'
+import { playMission, playStart } from '../lib/sound.js'
 
 export default function Briefing({ game, onStart, onEdit }) {
   const levelsN = game.levels.length
   const locksN = game.levels.reduce((n, l) => n + (l.locks?.length || 0), 0)
   const summary = [`${levelsN} Levels`, `${locksN} clinical locks`, `${game.lives} lives`]
 
-  function accept() {
+  // Play the mission theme when the opening screen appears. Browsers only allow
+  // audio after a user gesture — arriving here always follows a click (sign-in,
+  // Play Again, or Restart), so the gesture requirement is satisfied.
+  useEffect(() => {
     playMission()
+  }, [])
+
+  function accept() {
+    playStart()
     onStart()
   }
 

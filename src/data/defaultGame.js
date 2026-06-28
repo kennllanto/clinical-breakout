@@ -58,7 +58,7 @@ You have 3 team lives. Crack each lock's code within 2 minutes, then give a shor
         {
           id: '1.4',
           label: 'Lock 1.4 — Titration Parameters',
-          vignette: `The CVAD is successfully placed, and Noradrenaline is running at 5 mcg. According to the Surviving Sepsis guidelines, what is the standard minimum target MAP (mmHg) you should titrate this infusion to maintain?`,
+          vignette: `The CVAD is successfully placed, and Noradrenaline is running at 5 mcg. According to the Surviving Sepsis guidelines, what is the target MAP you should titrate this infusion to maintain?`,
           codes: ['65', '65MMHG', '65 MMHG'],
           rationale: `Consensus guidelines confirm that targeting a minimum MAP of 65 mmHg provides adequate organ-perfusion pressure in the majority of distributive shock states while minimizing unnecessary catecholamine toxicity, tachycardia, and excessive myocardial oxygen consumption (Westphal, n.d.).`,
         },
@@ -85,7 +85,7 @@ You have 3 team lives. Crack each lock's code within 2 minutes, then give a shor
         },
         {
           id: '2.3',
-          label: 'Lock 2.3 — The Safe Syringe Swap',
+          label: 'Lock 2.3 — The Safe Swap',
           vignette: `The pump delivering the high-dose Noradrenaline is alarming "Near End of Infusion". You also notice the line requires changing as it is nearing the 24-hour period. What technique will you perform to transition to the new infusion and line?`,
           codes: ['DOUBLE-PUMP', 'DOUBLE PUMP', 'CHANGEOVER', 'SMOOTH CHANGEOVER'],
           rationale: `Because of noradrenaline's 1–2 minute half-life, a standard stop-and-start swap causes immediate receptor vacancy. The team must utilise the simultaneous (double-pump) changeover technique: prime the new syringe up to the manifold, start the new pump at a baseline or calculated crossover rate while the old pump is still running, and carefully cross-taper over a 5–10 minute window to ensure a seamless, steady-state plasma concentration (Manias et al., 2021).`,
@@ -107,7 +107,7 @@ You have 3 team lives. Crack each lock's code within 2 minutes, then give a shor
         {
           id: '3.2',
           label: 'Lock 3.2 — Compounding Adverse Effects',
-          vignette: `Shortly after commencing the Dobutamine infusion at 5 mcg/kg/min, Ina's heart rate shoots up from 92 to 134 bpm and the rhythm changes to atrial fibrillation. What intrinsic pharmacological property of β1 agonists causes this adverse event?`,
+          vignette: `Shortly after commencing the Dobutamine infusion at 5 min, Ina's heart rate shoots up from 92 to 134 bpm and the rhythm changes to atrial fibrillation. What intrinsic pharmacological property of β1 agonists causes this adverse event?`,
           codes: ['TACHYARRHYTHMIA', 'CHRONOTROPY', 'POSITIVE CHRONOTROPY'],
           rationale: `A major limiting factor of standard catecholamine-based inotropes like dobutamine is their potent positive chronotropic effect and tendency to cause arrhythmias (Bistola et al., 2019). β1 activation speeds up the sinoatrial node firing rate and accelerates atrioventricular nodal conduction, frequently provoking tachyarrhythmias like atrial fibrillation, which can compromise diastolic filling time and worsen myocardial ischaemia.`,
         },
