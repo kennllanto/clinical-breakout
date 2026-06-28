@@ -44,14 +44,14 @@ You have 3 team lives. Crack each lock's code within 2 minutes, then give a shor
         {
           id: '1.2',
           label: 'Lock 1.2 — Receptor Mapping',
-          vignette: `The ICU team decides to commence a Noradrenaline infusion to start immediately once the CVAD is in. Which specific receptor type does Noradrenaline primarily target to address the low MAP, and what is its primary cellular mechanism?`,
+          vignette: `The ICU team decides to commence a Noradrenaline infusion to start immediately once the CVAD is in. Which specific receptor type does Noradrenaline primarily target to address the low MAP? And in your rationale explain what is its primary cellular mechanism.`,
           codes: ['ALPHA-1', 'A1', 'ALPHA1'],
           rationale: `Noradrenaline is a potent endogenous catecholamine with powerful agonist activity on α1-adrenergic receptors, alongside moderate β1 effects (Bangash et al., 2012). Stimulating α1 receptors on vascular smooth muscle activates an intracellular pathway that releases calcium, resulting in robust vasoconstriction, which directly raises SVR and blood pressure.`,
         },
         {
           id: '1.3',
           label: 'Lock 1.3 — Extravasation Emergency',
-          vignette: `While waiting for the CVAD, you notice the peripheral line running the metaraminol begins to swell, blanch, and feel cold to the touch. You suspect an extravasation. What is the immediate first action you must take?`,
+          vignette: `While waiting for the CVAD, you notice the peripheral line running the Metaraminol begins to swell, blanch, and feel cold to the touch. You suspect an extravasation. What is the immediate first action you must take?`,
           codes: ['STOP INFUSION', 'STOP THE INFUSION', 'STOP-INFUSION'],
           rationale: `Vasoactive extravasation causes profound localized vasoconstriction, leading to ischaemic tissue necrosis. The immediate nursing priority is to stop the infusion instantly to prevent further tissue exposure, leave the cannula in place to attempt aspiration of any residual drug, and then follow local guidelines for alpha-receptor antagonist infiltration (e.g., phentolamine) if indicated (Hunter et al., 2022).`,
         },
@@ -107,7 +107,7 @@ You have 3 team lives. Crack each lock's code within 2 minutes, then give a shor
         {
           id: '3.2',
           label: 'Lock 3.2 — Compounding Adverse Effects',
-          vignette: `Shortly after commencing the Dobutamine infusion at 5 min, Ina's heart rate shoots up from 92 to 134 bpm and the rhythm changes to atrial fibrillation. What intrinsic pharmacological property of β1 agonists causes this adverse event?`,
+          vignette: `Shortly after commencing the Dobutamine infusion at 5 mcg, Ina's heart rate shoots up from 92 to 134 bpm and the rhythm changes to atrial fibrillation. What intrinsic pharmacological property of β1 agonists causes this adverse event?`,
           codes: ['TACHYARRHYTHMIA', 'CHRONOTROPY', 'POSITIVE CHRONOTROPY'],
           rationale: `A major limiting factor of standard catecholamine-based inotropes like dobutamine is their potent positive chronotropic effect and tendency to cause arrhythmias (Bistola et al., 2019). β1 activation speeds up the sinoatrial node firing rate and accelerates atrioventricular nodal conduction, frequently provoking tachyarrhythmias like atrial fibrillation, which can compromise diastolic filling time and worsen myocardial ischaemia.`,
         },
