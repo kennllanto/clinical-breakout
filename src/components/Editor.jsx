@@ -167,7 +167,7 @@ export default function Editor({ game, onSave, onClose, onResetDefault }) {
                   />
                 </label>
                 <label className="full">
-                  <span>SBAR rationale</span>
+                  <span>Rationale (facilitator reference — not shown to players)</span>
                   <textarea rows={3} value={lock.rationale} onChange={(e) => update((d) => (d.levels[li].locks[ki].rationale = e.target.value))} />
                 </label>
                 <label className="full">

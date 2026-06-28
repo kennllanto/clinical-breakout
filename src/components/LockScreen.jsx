@@ -90,17 +90,12 @@ export default function LockScreen({
           </>
         ) : (
           <>
-            <div className="unlocked-banner">✅ Lock opened — deliver the SBAR handover</div>
+            <div className="unlocked-banner">✅ Lock opened — deliver the rationale</div>
             <Timer
               seconds={timers.sbar}
-              label="Phase 2 · SBAR Handover"
+              label="Phase 2 · Deliver the Rationale"
               resetKey={`sbar-${lock.id}-${attemptKey}`}
             />
-            <div className="rationale">
-              <span className="narrative-tag">Model clinical rationale</span>
-              <p>{lock.rationale}</p>
-              {lock.bonus && <p className="bonus">💡 {lock.bonus}</p>}
-            </div>
             <div className="facilitator">
               <span className="facilitator-label">Facilitator — did the cohort defend it?</span>
               <div className="facilitator-btns">
